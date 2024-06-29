@@ -31,4 +31,32 @@ class RBookModel {
         DB::commit();
         return true;
     }
+
+    public function getBookById(array $_id): array
+    {
+        return DB::select($this->_queryEditManager(), $_id);
+    }
+
+    private function _queryEditManager(): string
+    {
+        return "SELECT
+            b.title AS bookTitle,
+            a1.articleId,
+            a1.title AS articleTitle,
+            a2.articleId AS parentId,
+            a2.title AS parentTitle,
+            a3.articleId AS childId,
+            a3.title AS childTitle
+            FROM
+            article_book_relation abr
+            LEFT JOIN book b
+            ON abr.bookId = b.bookId
+            LEFT JOIN article a1
+            ON abr.articleId = a1.articleId
+            LEFT JOIN article a2
+            ON abr.parentId = a2.articleId
+            LEFT JOIN article a3
+            ON abr.childId = a3.articleId
+            WHERE b.bookId = :bookId";
+    }
 }
