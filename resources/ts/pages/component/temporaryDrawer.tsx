@@ -13,7 +13,6 @@ import CenterBox from "../component/centerBox";
 
 const TemporaryDrawer = () => {
   const menuList = [
-    { text: 'ログイン画面', url: '/login' },
     { text: 'メンバー一覧', url: '/member/list' },
     { text: '記事一覧', url: '/article/list' },
     { text: '本一覧', url: '/book/list' }
