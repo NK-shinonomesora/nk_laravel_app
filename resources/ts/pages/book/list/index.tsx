@@ -1,6 +1,6 @@
 import React from "react";
 import BasicTable from "../../component/basicTable";
-import TemporaryDrawer from "../../component/temporaryDrawer";
+import Header from "../../component/header";
 import CenterBox from "../../component/centerBox";
 import BaseButton from "../../component/baseButton";
 import { router } from '@inertiajs/react';
@@ -16,7 +16,7 @@ const Index: React.FC<BookListProps> = (props) => {
 
     return (
         <>
-        <TemporaryDrawer />
+        <Header />
         <form onSubmit={(e) => handleSubmit(e)}>
             <CenterBox mt='' mb='mb-5'>
                 <BaseButton

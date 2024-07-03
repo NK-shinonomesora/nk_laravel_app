@@ -26,4 +26,9 @@ class LoginService {
     {
         Session::put(['memberInfo' => $_data]);
     }
+
+    public function logout(): void
+    {
+        Session::forget('memberInfo');
+    }
 }

@@ -9,7 +9,7 @@ use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\Login\LoginService;
-
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,5 +27,11 @@ class LoginController extends Controller
     public function auth(LoginRequest $_request): RedirectResponse
     {
         return to_route('member.list');
+    }
+
+    public function logout(): RedirectResponse
+    {
+        $this->_loginService->logout();
+        return to_route('login.home');
     }
 }
