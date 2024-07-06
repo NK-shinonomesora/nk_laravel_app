@@ -29,14 +29,14 @@ const Index: React.FC<ArticleCreateProps> = () => {
     
         return (
             <form onSubmit={handleSubmit}>
-                <CenterBox>
+                <CenterBox mt="mt-5" mb="mb-5">
                     <>
                     <div className="text-xl">
                         <p>記事登録画面</p>
                     </div>
                     </>
                 </CenterBox>
-                <CenterBox>
+                <CenterBox mt="mt-5" mb="mb-5">
                     <BaseInput
                         onChange={changeTitle}
                         type="text"
@@ -44,13 +44,13 @@ const Index: React.FC<ArticleCreateProps> = () => {
                     >
                     </BaseInput>
                 </CenterBox>
-                <CenterBox>
+                <CenterBox mt="mt-20" mb="mb-20">
                     <BaseTextField 
                         label="記事の内容"
                         onChange={changeContent}
                     />
                 </CenterBox>
-                <CenterBox>
+                <CenterBox mt="mt-5" mb="mb-5">
                     <Button
                         color="info"
                         type="submit"

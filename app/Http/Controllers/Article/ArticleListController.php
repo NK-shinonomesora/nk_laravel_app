@@ -18,6 +18,6 @@ class ArticleListController extends Controller
 
     public function index(): Response
     {
-        return Inertia::render('article/list/index', $this->_articleListService->getArticles(['title', 'createdAt', 'updatedAt']));
+        return Inertia::render('article/list/index', $this->_articleListService->getArticles(['articleId', 'title', 'createdAt', 'updatedAt']));
     }
 }

@@ -9,7 +9,6 @@ const memberListHeader = ['メンバーID', '氏名', '名前', ''];
 const memberListKeys = ['memberId', 'lastName', 'firstName', 'edit'];
 
 const Index: React.FC<MemberListProps> = (props) => {
-    console.log(props.memberList)
     const handleSubmit = (e) => {
         e.preventDefault()
         router.get('/member/create', {})

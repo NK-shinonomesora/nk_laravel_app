@@ -10,22 +10,20 @@ interface BaseTextFieldProps {
 const BaseTextField: React.FC<BaseTextFieldProps> = ({ label, onChange }) => {
   return (
     <Box
-      component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '75ch' },
+        width: 500,
+        maxWidth: '100%',
       }}
-      noValidate
-      autoComplete="off"
+      className="mt-10 mb-10"
     >
-      <div>
         <TextField
-          id="outlined-multiline-flexible"
+          fullWidth
+          id="fullWidth"
           label={label}
           multiline
           maxRows={4}
           onChange={(e) => onChange(e.target.value)}
         />
-      </div>
     </Box>
   );
 }
