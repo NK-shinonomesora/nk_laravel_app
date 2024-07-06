@@ -8,6 +8,7 @@ use App\Http\Controllers\Member\MemberEditController;
 use App\Http\Controllers\Article\ArticleListController;
 use App\Http\Controllers\Article\ArticleCreateController;
 use App\Http\Controllers\Article\ArticleDetailController;
+use App\Http\Controllers\Article\ArticleEditController;
 use App\Http\Controllers\Book\BookCreateController;
 use App\Http\Controllers\Book\BookListController;
 use App\Http\Controllers\Book\BookDetailController;
@@ -23,6 +24,7 @@ Route::middleware([App\Http\Middleware\LoginCheckMiddleware::class])->group(func
     Route::get('/article/list', [ArticleListController::class, 'index'])->name('article.list');
     Route::get('/article/create', [ArticleCreateController::class, 'index']);
     Route::get('/article/detail', [ArticleDetailController::class, 'index'])->name('article.detail');
+    Route::get('/article/edit', [ArticleEditController::class, 'index'])->name('article.edit');
     
     Route::get('/book/create', [BookCreateController::class, 'index']);
     Route::get('/book/list', [BookListController::class, 'index'])->name('book.list');
@@ -36,6 +38,7 @@ Route::post('/member/create', [MemberCreateController::class, 'create']);
 Route::post('/member/edit', [MemberEditController::class, 'update'])->name('member.edit');
 
 Route::post('/article/create', [ArticleCreateController::class, 'create']);
+Route::post('/article/edit', [ArticleEditController::class, 'update'])->name('article.edit');
 
 Route::post('/book/create', [BookCreateController::class, 'create']);
 

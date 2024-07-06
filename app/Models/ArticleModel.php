@@ -9,4 +9,9 @@ class ArticleModel extends BaseModel {
     {
         return DB::insert(sprintf("INSERT INTO %s (title, content, createdAt, updatedAt, memberId) VALUES (:title, :content, :createdAt, :updatedAt, :memberId)", $this->_tableName), $_data);
     }
+
+    public function update(array $_data): bool
+    {
+        return DB::update(sprintf("UPDATE %s SET title=:title, content=:content, updatedAt=:updatedAt WHERE articleId=:articleId", $this->_tableName), $_data);
+    }
 }
