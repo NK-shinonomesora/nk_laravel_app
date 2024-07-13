@@ -14,8 +14,8 @@ export default class SelectElement {
     private addOrDeleteSelectElement: Function;
     private isRoot: boolean = false;
 
-    constructor(articleList: ArticleList[], parent: SelectElement | null, child: SelectElement | null, updateFunc: Function, addOrDeleteSelectElement: Function, isRoot = false) {
-        this.value = articleList[0].articleId;
+    constructor(articleList: ArticleList[], parent: SelectElement | null, child: SelectElement | null, updateFunc: Function, addOrDeleteSelectElement: Function, isRoot: boolean = false, value: number | null = null) {
+        this.value = !value ? articleList[0].articleId : value;
         this.articleList = articleList;
         this.parent = parent;
         this.child = child;
@@ -32,7 +32,7 @@ export default class SelectElement {
         return this.value;
     }
 
-    public setValue(value: string) {
+    public setValue(value: number) {
         this.value = value;
     }
 
@@ -56,7 +56,7 @@ export default class SelectElement {
         return this.isRoot;
     }
 
-    private onChange(value: string) {
+    private onChange(value: number) {
         this.setValue(value);
         this.updateFunc(Math.random().toString(32).substring(2));
     }

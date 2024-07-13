@@ -12,6 +12,7 @@ use App\Http\Controllers\Article\ArticleEditController;
 use App\Http\Controllers\Book\BookCreateController;
 use App\Http\Controllers\Book\BookListController;
 use App\Http\Controllers\Book\BookDetailController;
+use App\Http\Controllers\Book\BookEditController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Middleware\LoginCheckMiddleware;
 
@@ -29,7 +30,7 @@ Route::middleware([App\Http\Middleware\LoginCheckMiddleware::class])->group(func
     Route::get('/book/create', [BookCreateController::class, 'index']);
     Route::get('/book/list', [BookListController::class, 'index'])->name('book.list');
     Route::get('/book/detail', [BookDetailController::class, 'index'])->name('book.detail');
-    
+    Route::get('/book/edit', [BookEditController::class, 'index'])->name('book.edit');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.home');
@@ -41,6 +42,7 @@ Route::post('/article/create', [ArticleCreateController::class, 'create']);
 Route::post('/article/edit', [ArticleEditController::class, 'update'])->name('article.edit');
 
 Route::post('/book/create', [BookCreateController::class, 'create']);
+Route::post('/book/edit', [BookEditController::class, 'update']);
 
 Route::post('/login', [LoginController::class, 'auth']);
 Route::post('/login/logout', [LoginController::class, 'logout']);

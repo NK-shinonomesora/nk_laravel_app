@@ -5,8 +5,8 @@ import CenterBox from "../../component/centerBox";
 import BaseButton from "../../component/baseButton";
 import { router } from '@inertiajs/react';
 
-const bookListHeader = ['タイトル', '作成日時', '更新日時'];
-const bookListKeys = ['title', 'createdAt', 'updatedAt'];
+const bookListHeader = ['タイトル', '作成日時', '更新日時', ''];
+const bookListKeys = ['title', 'createdAt', 'updatedAt', 'edit'];
 
 const Index: React.FC<BookListProps> = (props) => {
     const handleSubmit = (e) => {
@@ -30,6 +30,7 @@ const Index: React.FC<BookListProps> = (props) => {
             dataKeys={bookListKeys}
             listHeader={bookListHeader}
             url="/book/detail"
+            editUrl="/book/edit"
             primaryKey="bookId"
         />
         </>

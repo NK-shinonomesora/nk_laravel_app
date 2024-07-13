@@ -32,6 +32,23 @@ class RBookModel {
         return true;
     }
 
+    public function updateBookById(array $_data): bool
+    {
+        DB::beginTransaction();
+        try {
+            $this->_articleBookRelationModel->deleteById(['bookId' => $_data['bookId']]);
+            $this->_bookModel->updateById(['bookId' => $_data['bookId'], 'title' => $_data['title'], 'updatedAt' => date('Y-m-d')]);
+            $postRelationData = $_data['postRelationData']; unset($_data['postRelationData']);
+            foreach($postRelationData as $data) {
+                $this->_articleBookRelationModel->insert(array_merge($data, ['bookId' => $_data['bookId']]));
+            }
+        } catch(Exception $e) {
+            DB::rollBack();
+        }
+        DB::commit();
+        return true;
+    }
+
     public function getBookById(array $_id): array
     {
         return DB::select($this->_queryEditManager(), $_id);
@@ -41,6 +58,7 @@ class RBookModel {
     {
         return "SELECT
             b.title AS bookTitle,
+            b.bookId,
             a1.articleId,
             a1.title AS articleTitle,
             a2.articleId AS parentId,
