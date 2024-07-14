@@ -32,7 +32,7 @@ const Index: React.FC<LoginProps> = (props) => {
             <CenterBox mt='mt-5' mb='mb-5'>
                 <>
                 <div className="text-xl">
-                    <p>hogehogeアプリケーション</p>
+                    <p>Book Creator</p>
                 </div>
                 </>
             </CenterBox>

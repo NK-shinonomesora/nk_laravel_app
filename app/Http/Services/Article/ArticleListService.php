@@ -15,6 +15,6 @@ class ArticleListService {
     public function getArticles(array $_columns): array
     {
         $memberInfo = Session::get('memberInfo');
-        return ['articleList' => $this->_articleModel->select($_columns, ['memberId' => reset($memberInfo)->memberId,])];
+        return ['articleList' => $this->_articleModel->select($_columns, ['memberId' => reset($memberInfo)->memberId])];
     }
 }

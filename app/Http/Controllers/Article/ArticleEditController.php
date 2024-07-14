@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Services\Article\ArticleEditService;
+use App\Http\Requests\Article\ArticleEditRequest;
 
 class ArticleEditController extends Controller
 {
@@ -22,7 +23,7 @@ class ArticleEditController extends Controller
         return Inertia::render('article/edit/index', $this->_articleEditService->getArticleById($_request->query()));
     }
 
-    public function update(Request $_request): RedirectResponse
+    public function update(ArticleEditRequest $_request): RedirectResponse
     {
         $this->_articleEditService->updateArticle($_request->all());
         return to_route('article.list');

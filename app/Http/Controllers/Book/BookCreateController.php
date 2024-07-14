@@ -9,6 +9,7 @@ use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Services\Book\BookCreateService;
 use App\Http\Services\Article\ArticleListService;
+use App\Http\Requests\Book\BookCreateRequest;
 
 class BookCreateController extends Controller
 {
@@ -25,7 +26,7 @@ class BookCreateController extends Controller
         return Inertia::render('book/create/index', $this->_articleListService->getArticles(['articleId', 'title', 'content']));
     }
 
-    public function create(Request $_request): RedirectResponse
+    public function create(BookCreateRequest $_request): RedirectResponse
     {
         $this->_bookCreateService->createNewBook($_request->all());
         return to_route('book.list');

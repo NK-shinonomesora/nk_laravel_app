@@ -4,6 +4,7 @@ import TestHook from "../../hook/testHook";
 import CenterBox from "../../component/centerBox";
 import Input from '@mui/material/Input';
 import BaseButton from '../../component/baseButton';
+import ErrorMessage from "../../component/errorMessage";
 import { router } from '@inertiajs/react';
 
 interface BookEditProps {}
@@ -129,9 +130,23 @@ const Index: React.FC<BookEditProps> = (props) => {
                     className="w-[24rem] border-solid border border-black"
                 />
             </CenterBox>
+            { props.errors.title &&
+                <CenterBox mt='-mt-2' mb=''>
+                    <ErrorMessage 
+                        text={props.errors.title}
+                    />
+                </CenterBox>
+            }
             {displaySelectElements.map((element) => (
                 element
             ))}
+            { props.errors.postRelationData &&
+                <CenterBox mt='-mt-2' mb=''>
+                    <ErrorMessage 
+                        text={props.errors.postRelationData}
+                    />
+                </CenterBox>
+            }
             <CenterBox mt='mt-5' mb='mb-5'>
                 <BaseButton
                     type='submit'

@@ -35,7 +35,7 @@ const Index: React.FC<MemberEditProps> = (props) => {
             <CenterBox>
                 <>
                 <div className="text-xl">
-                    <p>メンバー登録画面</p>
+                    <p>メンバー編集画面</p>
                 </div>
                 </>
             </CenterBox>
@@ -87,7 +87,7 @@ const Index: React.FC<MemberEditProps> = (props) => {
                 <Button
                     color="info"
                     type="submit"
-                >登録</Button>
+                >更新</Button>
             </CenterBox>
 
         </form>

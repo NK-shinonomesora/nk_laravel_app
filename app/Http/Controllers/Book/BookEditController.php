@@ -9,6 +9,7 @@ use Inertia\Response;
 use App\Http\Services\Book\BookEditService;
 use App\Http\Services\Article\ArticleListService;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Book\BookEditRequest;
 
 class BookEditController extends Controller
 {
@@ -27,7 +28,7 @@ class BookEditController extends Controller
             array_merge($this->_bookEditService->getBookById($_request->query()), $this->_articleListService->getArticles(['articleId', 'title', 'content'])));
     }
 
-    public function update(Request $_request): RedirectResponse
+    public function update(BookEditRequest $_request): RedirectResponse
     {
         $this->_bookEditService->updateBookById($_request->all());
         return to_route('book.list');

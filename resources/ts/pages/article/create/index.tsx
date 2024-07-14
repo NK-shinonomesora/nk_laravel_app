@@ -3,11 +3,12 @@ import Button from '@mui/material/Button';
 import CenterBox from "../..//component/centerBox";
 import BaseInput from "../../component/baseInput";
 import BaseTextField from "../../component/baseTextField";
+import ErrorMessage from "../../component/errorMessage";
 import { router } from '@inertiajs/react';
 
 interface ArticleCreateProps {}
 
-const Index: React.FC<ArticleCreateProps> = () => {
+const Index: React.FC<ArticleCreateProps> = (props) => {
         const [title, setTitle] = useState<string>('');
         const [content, setContent] = useState<string>('');
 
@@ -44,12 +45,26 @@ const Index: React.FC<ArticleCreateProps> = () => {
                     >
                     </BaseInput>
                 </CenterBox>
+                { props.errors.title &&
+                    <CenterBox mt='-mt-2' mb=''>
+                        <ErrorMessage 
+                            text={props.errors.title}
+                        />
+                    </CenterBox>
+                }
                 <CenterBox mt="mt-20" mb="mb-20">
                     <BaseTextField 
                         label="記事の内容"
                         onChange={changeContent}
                     />
                 </CenterBox>
+                { props.errors.content &&
+                    <CenterBox mt='-mt-2' mb=''>
+                        <ErrorMessage 
+                            text={props.errors.content}
+                        />
+                    </CenterBox>
+                }
                 <CenterBox mt="mt-5" mb="mb-5">
                     <Button
                         color="info"

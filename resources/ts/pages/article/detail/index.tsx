@@ -6,14 +6,14 @@ const Index: React.FC<ArticleListProps> = (props) => {
 
     return (
         <>
-        <CenterBox mt='mt-5' mb='mb-5'>
+        <CenterBox mt='mt-5' mb='mb-48'>
             <>
             <div className="text-xl">
                 <p>{title}</p>
             </div>
             </>
         </CenterBox>
-        <CenterBox mt='mt-5' mb='mb-5'>
+        <CenterBox mt='mt-48' mb='mb-5'>
             <pre>{content}</pre>
         </CenterBox>
         </>

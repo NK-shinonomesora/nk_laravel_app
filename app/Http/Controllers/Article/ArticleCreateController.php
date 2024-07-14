@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Services\Article\ArticleCreateService;
+use App\Http\Requests\Article\ArticleCreateRequest;
 
 class ArticleCreateController extends Controller
 {
@@ -22,7 +23,7 @@ class ArticleCreateController extends Controller
         return Inertia::render('article/create/index');
     }
 
-    public function create(Request $_request): RedirectResponse
+    public function create(ArticleCreateRequest $_request): RedirectResponse
     {
         $this->_articleCreateService->createNewArticle($_request->all());
         return to_route('article.list');

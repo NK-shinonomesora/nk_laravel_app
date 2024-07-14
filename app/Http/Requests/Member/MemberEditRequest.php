@@ -14,8 +14,8 @@ class MemberEditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lastName' => ['required'],
-            'firstName' => ['required'],
+            'lastName' => ['required', 'max:50'],
+            'firstName' => ['required', 'max:50'],
         ];
     }
 
@@ -23,7 +23,9 @@ class MemberEditRequest extends FormRequest
     {
         return [
             'lastName.required' => '氏名を入力してください。',
+            'lastName.max' => '氏名は50文字以下で入力してください。',
             'firstName.required' => '名前を入力してください。',
+            'firstName.max' => '名前は50文字以下で入力してください。',
         ];
     }
 }

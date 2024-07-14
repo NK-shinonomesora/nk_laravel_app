@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import CenterBox from "../..//component/centerBox";
 import Input from "@mui/material/Input";
 import TextField from '@mui/material/TextField';
+import ErrorMessage from "../../component/errorMessage";
 import Box from '@mui/material/Box';
 import { router } from '@inertiajs/react';
 
@@ -50,6 +51,13 @@ const Index: React.FC<ArticleEditProps> = (props) => {
                 >
                 </Input>
             </CenterBox>
+            { props.errors.title &&
+                <CenterBox mt='-mt-2' mb=''>
+                    <ErrorMessage 
+                        text={props.errors.title}
+                    />
+                </CenterBox>
+            }
             <CenterBox mt="mt-20" mb="mb-20">
                 <Box
                     sx={{
@@ -69,11 +77,18 @@ const Index: React.FC<ArticleEditProps> = (props) => {
                         />
                 </Box>
             </CenterBox>
+            { props.errors.content &&
+                    <CenterBox mt='-mt-2' mb=''>
+                        <ErrorMessage 
+                            text={props.errors.content}
+                        />
+                    </CenterBox>
+                }
             <CenterBox mt="mt-5" mb="mb-5">
                 <Button
                     color="info"
                     type="submit"
-                >登録</Button>
+                >更新</Button>
             </CenterBox>
         </form>
     )
