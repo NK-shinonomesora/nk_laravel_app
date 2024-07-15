@@ -17,4 +17,9 @@ class ArticleListService {
         $memberInfo = Session::get('memberInfo');
         return ['articleList' => $this->_articleModel->select($_columns, ['memberId' => reset($memberInfo)->memberId])];
     }
+
+    public function deleteArticleById(array $_data): void
+    {
+        $this->_articleModel->deleteById($_data);
+    }
 }

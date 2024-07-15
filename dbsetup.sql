@@ -38,11 +38,13 @@ CREATE TABLE article_book_relation (
     childId INT,
     articleId INT NOT NULL,
     bookId INT NOT NULL,
+    memberId VARCHAR(50) NOT NULL,
     PRIMARY KEY (articleId, bookId),
     FOREIGN KEY (parentId) REFERENCES article(articleId),
     FOREIGN KEY (childId) REFERENCES article(articleId),
     FOREIGN KEY (articleId) REFERENCES article(articleId),
-    FOREIGN KEY (bookId) REFERENCES book(bookId)
+    FOREIGN KEY (bookId) REFERENCES book(bookId),
+    FOREIGN KEY (memberId) REFERENCES member(memberId)
 );
 
 DROP TABLE IF EXISTS app_config;

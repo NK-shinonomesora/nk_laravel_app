@@ -19,4 +19,9 @@ class BaseModel {
                 ->get()
                 ->toArray();
     }
+
+    public function deleteByMemberId(array $_data): bool
+    {
+        return DB::delete(sprintf("DELETE FROM %s WHERE memberId = :memberId", $this->_tableName), $_data);
+    }
 }

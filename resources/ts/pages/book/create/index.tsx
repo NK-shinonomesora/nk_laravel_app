@@ -39,7 +39,7 @@ const Index: React.FC<ArticleListProps> = (props) => {
         updateFunc(Math.random().toString(32).substring(2))
     }
 
-    const [rootSelectElement, setRootSelectElement] = useState<SelectElement>(initSelectElement(updateFunc, addOrDeleteSelectElement, props.articleList));
+    const [rootSelectElement] = useState<SelectElement>(initSelectElement(updateFunc, addOrDeleteSelectElement, props.articleList));
 
     function countSelectElements(element: SelectElement = rootSelectElement, count: number = 0) {
         if(!element.getChild()) return count;

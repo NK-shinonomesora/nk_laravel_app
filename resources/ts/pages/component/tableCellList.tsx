@@ -8,10 +8,11 @@ interface TableCellListProps {
     keys: string[]
     url: string,
     editUrl: string,
+    deleteUrl: string,
     primaryKey: string,
 }
 
-const TableCellList: React.FC<TableCellListProps> = ({ data, keys, url, editUrl, primaryKey }) => {
+const TableCellList: React.FC<TableCellListProps> = ({ data, keys, url, editUrl, deleteUrl, primaryKey }) => {
     const [primaryKeyValue, setPrimaryKeyValue] = useState<string>('');
 
     const changePrimaryKeyValue = (value: string) => {
@@ -46,6 +47,20 @@ const TableCellList: React.FC<TableCellListProps> = ({ data, keys, url, editUrl,
                             <BaseButton
                                 type="submit"
                                 text="編集"
+                                onClick={() => changePrimaryKeyValue(data[primaryKey])}
+                            />
+                        </a>
+                    </form>
+                </TableCell>
+            )
+        } else if(key === 'delete') {
+            return (
+                <TableCell>
+                    <form onSubmit={(e) => handleSubmit(e, deleteUrl)}>
+                        <a href='#'>
+                            <BaseButton
+                                type="submit"
+                                text="削除"
                                 onClick={() => changePrimaryKeyValue(data[primaryKey])}
                             />
                         </a>

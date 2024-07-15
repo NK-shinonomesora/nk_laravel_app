@@ -14,4 +14,9 @@ class ArticleModel extends BaseModel {
     {
         return DB::update(sprintf("UPDATE %s SET title=:title, content=:content, updatedAt=:updatedAt WHERE articleId=:articleId", $this->_tableName), $_data);
     }
+
+    public function deleteById(array $_data): bool
+    {
+        return DB::delete(sprintf("DELETE FROM %s WHERE articleId = :articleId", $this->_tableName), $_data);
+    }
 }

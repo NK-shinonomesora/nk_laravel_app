@@ -23,7 +23,7 @@ class RBookModel {
             $postRelationData = $_data['postRelationData']; unset($_data['postRelationData']);
             $this->_bookModel->insert(array_merge(['bookId' => $bookId], $_data));
             foreach($postRelationData as $data) {
-                $this->_articleBookRelationModel->insert(array_merge($data, ['bookId' => $bookId]));
+                $this->_articleBookRelationModel->insert(array_merge($data, ['bookId' => $bookId, 'memberId' => $_data['memberId']]));
             }
         } catch(Exception $e) {
             DB::rollBack();
@@ -40,8 +40,21 @@ class RBookModel {
             $this->_bookModel->updateById(['bookId' => $_data['bookId'], 'title' => $_data['title'], 'updatedAt' => date('Y-m-d')]);
             $postRelationData = $_data['postRelationData']; unset($_data['postRelationData']);
             foreach($postRelationData as $data) {
-                $this->_articleBookRelationModel->insert(array_merge($data, ['bookId' => $_data['bookId']]));
+                $this->_articleBookRelationModel->insert(array_merge($data, ['bookId' => $_data['bookId'], 'memberId' => $_data['memberId']]));
             }
+        } catch(Exception $e) {
+            DB::rollBack();
+        }
+        DB::commit();
+        return true;
+    }
+
+    public function deleteBookById(array $_data): bool
+    {
+        DB::beginTransaction();
+        try {
+            $this->_articleBookRelationModel->deleteById(['bookId' => $_data['bookId']]);
+            $this->_bookModel->deleteById(['bookId' => $_data['bookId']]);
         } catch(Exception $e) {
             DB::rollBack();
         }

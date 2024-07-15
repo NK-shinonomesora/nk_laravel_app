@@ -19,6 +19,7 @@ class BookEditService {
 
     public function updateBookById(array $_data): void
     {
-        $this->_rBookModel->updateBookById($_data);
+        $memberInfo = Session::get('memberInfo');
+        $this->_rBookModel->updateBookById(array_merge($_data, ['memberId' => reset($memberInfo)->memberId]));
     }
 }

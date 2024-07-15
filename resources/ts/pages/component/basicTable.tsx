@@ -14,10 +14,11 @@ interface BasicTableProps {
   listHeader: string[],
   url: string,
   editUrl: string,
+  deleteUrl: string,
   primaryKey: string
 }
 
-const BasicTable: React.FC<BasicTableProps> = ({ dataList, dataKeys, listHeader, url, editUrl, primaryKey }) => {
+const BasicTable: React.FC<BasicTableProps> = ({ dataList, dataKeys, listHeader, url, editUrl, deleteUrl, primaryKey }) => {
   return (
       <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -39,6 +40,7 @@ const BasicTable: React.FC<BasicTableProps> = ({ dataList, dataKeys, listHeader,
                         keys={dataKeys}
                         url={url}
                         editUrl={editUrl}
+                        deleteUrl={deleteUrl}
                         primaryKey={primaryKey}
                     />
                     </TableRow>

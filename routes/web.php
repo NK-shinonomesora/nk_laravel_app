@@ -21,16 +21,19 @@ Route::middleware([App\Http\Middleware\LoginCheckMiddleware::class])->group(func
     Route::get('/member/list', [MemberListController::class, 'index'])->name('member.list');
     Route::get('/member/detail', [MemberDetailController::class, 'index'])->name('member.detail');
     Route::get('/member/edit', [MemberEditController::class, 'index'])->name('member.edit');
+    Route::get('/member/delete', [MemberListController::class, 'delete'])->name('member.delete');
     
     Route::get('/article/list', [ArticleListController::class, 'index'])->name('article.list');
     Route::get('/article/create', [ArticleCreateController::class, 'index']);
     Route::get('/article/detail', [ArticleDetailController::class, 'index'])->name('article.detail');
     Route::get('/article/edit', [ArticleEditController::class, 'index'])->name('article.edit');
+    Route::get('/article/delete', [ArticleListController::class, 'delete'])->name('article.delete');
     
     Route::get('/book/create', [BookCreateController::class, 'index']);
     Route::get('/book/list', [BookListController::class, 'index'])->name('book.list');
     Route::get('/book/detail', [BookDetailController::class, 'index'])->name('book.detail');
     Route::get('/book/edit', [BookEditController::class, 'index'])->name('book.edit');
+    Route::get('/book/delete', [BookListController::class, 'delete'])->name('book.delete');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.home');

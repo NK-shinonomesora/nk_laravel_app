@@ -12,6 +12,6 @@ class MemberModel extends BaseModel {
 
     public function update(array $_data): bool
     {
-        return DB::update(sprintf("UPDATE %s SET lastName=:lastName, firstName=:firstName WHERE memberId=:memberId", $this->_tableName), $_data);
+        return DB::update(sprintf("UPDATE %s SET lastName = :lastName, firstName = :firstName WHERE memberId = :memberId", $this->_tableName), $_data);
     }
 }
